@@ -2,9 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './containers/App';
+import { Provider} from 'react-redux';
+import {createStore} from 'redux';
 import registerServiceWorker from './registerServiceWorker';
 import 'tachyons'; 
 
+import { searchRobots } from './reducers.js';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(searchRobots);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App  />
+    </Provider>, document.getElementById('root'));
 // registerServiceWorker();
